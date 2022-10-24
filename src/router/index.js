@@ -1,29 +1,91 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-
-Vue.use(VueRouter)
-
+import Vue from "vue";
+import VueRouter from "vue-router";
+import index from "../views/index.vue";
+Vue.use(VueRouter);
+import users from "./modules/user"
 const routes = [
   {
-    path: '/',
-    name: 'home',
-    component: HomeView
+    path: "/",
+    name: "index",
+    component: index,
+    meta: { root:true }
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
-]
+    path: "/fabu",
+    name: "fabu",
+    meta: { root:true },
+    component: () => import("../views/fabu.vue"),
+  },
+  {
+    path: "/home",
+    name: "home",
+    meta: { root:true },
+    component: () => import("../views/home.vue"),
+  },
+  {
+    path: "/xiangqing",
+    name: "xiangqing",
+    
+    component: () => import("../views/xiangqing.vue"),
+  },
+  {
+    path: "/search",
+    name: "search",
+    
+    component: () => import("../views/search.vue"),
+  },
+  {
+    path: "/mysend",
+    name: "mysend",
+    meta: { auth:true },
+    
+    component: () => import("../views/mysend.vue"),
+  },
+  {
+    path: "/history",
+    name: "history",
+    meta: { auth:true },
+    
+    component: () => import("../views/history.vue"),
+  },
+  {
+    path: "/change",
+    name: "change",
+    
+    component: () => import("../views/change.vue"),
+  },
+  {
+    path: "/genggai",
+    name: "genggai",
+    meta: { auth:true },
+    
+    component: () => import("../views/genggai.vue"),
+  },
+
+
+  ...users
+
+  
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
-  routes
-})
-
-export default router
+  routes,
+});
+// router.beforeEach((to, from, next) => {
+//  if(to.meta.auth){
+//       let islogin=true
+//       if(islogin){
+//         next()
+//       }else{
+//         setTimeout(v=>{
+//               next("./login")
+//         },1000)
+//       }
+//  }else{
+//   next
+//  }
+  
+// })
+export default router;
