@@ -76,7 +76,9 @@
   <van-grid-item icon="photo-o" text="我的发布" @click="$router.push('/mysend')" />
   <van-grid-item icon="photo-o" text="历史浏览" @click="$router.push('/history')" />
   <van-grid-item icon="photo-o" text="修改详细信息" @click="genggai"/>
-  <van-grid-item icon="photo-o" text="文字" />
+  <van-grid-item icon="photo-o" text="忘记密码"  @click="$router.push('/forget')"/>
+  <van-grid-item icon="photo-o" text="修改密码"  @click="$router.push('/modify')"/>
+
 </van-grid>
     <!-- <van-grid square>
       <van-grid-item

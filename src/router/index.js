@@ -61,7 +61,20 @@ const routes = [
     
     component: () => import("../views/genggai.vue"),
   },
-
+  {
+    path: "/forget",
+    name: "forget",
+    meta: { auth:true },
+    
+    component: () => import("../views/forget.vue"),
+  },{
+    path: "/modify",
+    name: "modify",
+    meta: { auth:true },
+    
+    component: () => import("../views/modify.vue"),
+  },
+  
 
   ...users
 
